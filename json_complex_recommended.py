@@ -1,8 +1,10 @@
 from pyspark.sql import *
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
+
 spark = SparkSession.builder.master("local[*]").appName("test").getOrCreate()
-data="C:\\Users\\skmjm\\Downloads\\world_bank.json"
+#C:\bigdata\drivers
+data="C:\\bigdata\\drivers\\world_bank.json"
 
 df=spark.read.format("json").option("multiLine","false").load(data)
 def flatten_json(df):

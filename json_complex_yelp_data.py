@@ -1,8 +1,9 @@
 from pyspark.sql import *
 from pyspark.sql.functions import *
+import re
 
 spark = SparkSession.builder.master("local[*]").appName("test").getOrCreate()
-import re
+
 
 data="C:\\bigdata\\drivers\\stocks.json"
 df=spark.read.format("json").option("multiLine","false").load(data)

@@ -20,7 +20,6 @@ df.createOrReplaceTempView("temp")
 res = spark.sql("select * from temp")
 res.show()
 
-
 df1.createOrReplaceTempView("secontab")
 res1 = spark.sql("select * from secondtab")
 res1.show()
