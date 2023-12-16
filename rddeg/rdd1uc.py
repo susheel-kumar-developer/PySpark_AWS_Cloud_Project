@@ -16,13 +16,12 @@ sc = spark.sparkContext
 
 rddc = sc.textFile(data)
 
+print("Get num partition as per my laptop core->",rddc.getNumPartitions())
+
 res = rddc.filter(lambda x:"@" in x).map(lambda x:x.split(" ")).map(lambda x:(x[0],x[-1]))
 # take() is action to display all number of records
 #collect() will display all records but not recommended
 #if data is structure format like name and email convert to that to rdd to run sql query
-
-
-
 
 cols = ["name","email"]
 df = res.toDF(cols)
@@ -39,4 +38,6 @@ res = df.withColumn("age",lit("test"))\
 res.show(truncate=False)
 # for x in res.take(9):
 #     print(x)
+
+print("get num partition->",df.rdd.getNumPartitions())
 
